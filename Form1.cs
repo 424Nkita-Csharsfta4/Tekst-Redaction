@@ -59,12 +59,12 @@ namespace text_redaction
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+            
             Text_redactor text_Redactor = new Text_redactor();
             text_Redactor.Show();
             this.Width = 0;
             this.Height = 0;
-
+          
 
         }
 
@@ -77,6 +77,11 @@ namespace text_redaction
         {
             Registration registration = new Registration();
             registration.ShowDialog();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,15 +11,23 @@ using System.IO;
 using System.Drawing.Printing;
 using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.Office.Interop.Word;
+using System.Speech.Recognition;
+using System.Globalization;
+using System.Speech.Synthesis;
 
 namespace text_redaction
 {
     public partial class Text_redactor : Form
     {
         private string Open_Files;
+        private object rtb;
+
+        SpeechSynthesizer speech;
+
         public Text_redactor()
         {
             InitializeComponent();
+            speech = new SpeechSynthesizer();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -121,6 +129,78 @@ namespace text_redaction
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/424Nkita-Csharsfta4");
+        }
+
+        private void подчеркнутьТекстToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void паузаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(richTextBox1.Text != "")
+            {
+                speech.SpeakAsync(richTextBox1.Text);
+            }
+        }
+
+        private void паузаToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if(speech.State == SynthesizerState.Speaking)
+            {
+                speech.Pause();
+            }
+        }
+
+        private void стопToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(speech.State == SynthesizerState.Paused)
+            {
+                speech.Resume();
+            }
+        }
+
+        private void заднийФонToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.BackColor = cd.Color;
+            }
+        }
+
+        private void текстЦветToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.ForeColor = cd.Color;
+            }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void кодитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IDE_CODING _CODING = new IDE_CODING();
+            _CODING.Show();
+            Text_redactor text_Redactor = new Text_redactor();
+            this.Width = 0;
+            this.Height = 0;
+
+        }
+
+        private void fastColoredTextBox1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void файлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,10 +34,9 @@ namespace text_redaction
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +44,7 @@ namespace text_redaction
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(106, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(376, 134);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(176, 111);
             this.pictureBox1.TabIndex = 0;
@@ -54,17 +53,17 @@ namespace text_redaction
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(248, 640);
+            this.label1.Location = new System.Drawing.Point(797, 640);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Beta_Version_0.1.0";
+            this.label1.Text = "Beta_Version_0.6.4";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 268);
+            this.label2.Location = new System.Drawing.Point(338, 287);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(308, 20);
             this.label2.TabIndex = 2;
@@ -73,38 +72,18 @@ namespace text_redaction
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 297);
+            this.label3.Location = new System.Drawing.Point(338, 317);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(228, 40);
+            this.label3.Size = new System.Drawing.Size(115, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Перед началом работы нужно \r\nзарегистрироваться";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(75, 386);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 43);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Имя";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(75, 452);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 43);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "Пароль";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.label3.Text = "Сделано на C# ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(129, 517);
+            this.button2.Location = new System.Drawing.Point(376, 394);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 39);
+            this.button2.Size = new System.Drawing.Size(176, 46);
             this.button2.TabIndex = 7;
             this.button2.Text = "Вход";
             this.button2.UseVisualStyleBackColor = true;
@@ -119,17 +98,25 @@ namespace text_redaction
             this.label4.TabIndex = 8;
             this.label4.Text = "Последние обновление было 08.01.2023";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(338, 349);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(237, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Студентом 313гр Мошой Никита";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(384, 669);
+            this.ClientSize = new System.Drawing.Size(940, 669);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -154,10 +141,9 @@ namespace text_redaction
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
