@@ -12,6 +12,7 @@
 Описание проета и кода в нём.
 ```
 Новое обновление 11.01.2023!!!!!!!!
+Новое обновление 15.01.2023!!!!!!!!
 
 Beta_Version_0.6.4
 Обновление большое.
@@ -21,6 +22,8 @@ Beta_Version_0.6.4
 Добавлено компиляцию кода.
 Добавлено Терминал.
 Добавлена Особая компиляция HTML.
+Новое оформление с помощью библиотеки для Desktop Ui Winforms - <a href="https://github.com/ComponentFactory/Krypton">Ui</a>
+Добавлено Dragn Drop
 Что планируется:
 Совместное программирование через WebSocket.
 Совместное редактирование кода.
@@ -46,6 +49,13 @@ AttachDbFilename=C:\Users\tvc\source\repos\text_redaction\Database1.mdf;
 Integrated Security=True");
 cn.Open();
 ````
+![image](https://user-images.githubusercontent.com/103760832/212556897-7dc00659-e301-4439-b817-158b19876eff.png)
+
+![image](https://user-images.githubusercontent.com/103760832/212556912-92665d08-9d35-4aa9-bb4b-a7a8e5e73900.png)
+
+![image](https://user-images.githubusercontent.com/103760832/212556927-e588ec2e-8e9c-438e-92cf-1404c5a43785.png)
+
+
 Форма входа
 
 ![image](https://user-images.githubusercontent.com/103760832/211211669-fe1f5c11-b4d2-443c-8772-8d2541695653.png)
