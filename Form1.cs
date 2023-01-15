@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ComponentFactory.Krypton.Toolkit;
 namespace text_redaction
 {
-    public partial class Form1 : Form
+    public partial class Form1 : KryptonForm
     {
         SqlCommand cmd;
         SqlConnection cn;
@@ -75,13 +75,29 @@ namespace text_redaction
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
-            registration.ShowDialog();
+           
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            //Registration registration = new Registration();
+            //registration.ShowDialog();
+            //Text_redactor text_Redactor = new Text_redactor();
+            //text_Redactor.Show();
+            IDE_CODING iDE_CODING = new IDE_CODING();
+            iDE_CODING.Show();
+            this.Width = 0;
+            this.Height = 0;
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Скоро Будет");
         }
     }
 }

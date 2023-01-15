@@ -19,10 +19,11 @@ using System.CodeDom.Compiler;
 using System.CodeDom;
 using System.Windows.Controls;
 using System.Runtime.InteropServices;
-
+using static System.Console;
+using ComponentFactory.Krypton.Toolkit;
 namespace text_redaction
 {
-    public partial class IDE_CODING : Form
+    public partial class IDE_CODING : KryptonForm
     {
         private string Open_Files;
         private object rtb;
@@ -245,31 +246,69 @@ namespace text_redaction
         private void cToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
+            fastColoredTextBox1.Text = "//C# " +
+                "\nConsole.WriteLine('Hello weld');";
         }
 
         private void pHPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.PHP;
+            fastColoredTextBox1.Text = "//Php" +
+                "\n<?php" +
+                "\necho 'Привет мир!';" +
+                "\n?>";
         }
 
         private void javaScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.JS;
+            fastColoredTextBox1.Text = "//JavaScript" +
+                "\nconsole.log('Hello world!');";
         }
 
         private void kotlinToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.Custom;
+            fastColoredTextBox1.Text = "//Kotlin"+
+                "\nfun main() {" +
+                "\nprintln('Hello world!')" +
+                "\n}";
         }
 
         private void hTMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.HTML;
+            fastColoredTextBox1.Text = 
+                "<!DOCTYPE html>" +
+                "\n<html>" +
+                "  \n<head>" +
+                "  \n<meta charset = 'utf-8' >" +
+                "  \n<title>Тестовая страница</title>" +
+                "  \n</head>" +
+                "  \n<body>" +
+                "  \n<div>"+
+                "  \n<p>Приветсвую тебя в мире веба</p>"+
+                "  \n<img src = 'https://i.ytimg.com/vi/WQCGnUTOjNk/maxresdefault.jpg'>" +
+                 "  \n</div>" +
+                "  \n<style>" +
+                "  \nimg{" +
+                "  \nwidth:700px;" +
+                "  \nborder:1px solid #1e1e1e;" +
+                "  \n}"+
+                "   \ndiv{" +
+                "    \ndisplay:flex;" +
+                "     \ngap:2em;" +
+                "     \n}" +
+                "  \n</style>"+
+                "  \n</body>" +
+                "\n</html> ";
         }
 
         private void sQLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.SQL;
+            fastColoredTextBox1.Text = "IF EXISTS (SELECT name FROM sysobjects WHERE name = 'hello')" +
+                "\nDROP PROCEDURE hello; ";
         }
 
         private void скомпилироватьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -288,21 +327,21 @@ namespace text_redaction
                 {
                     OutPath = sf.FileName;
                 }
-                //compile code:
-                //create c# code compiler
+                //компилируем код:
+                //создаем компилятор кода С#
                 CSharpCodeProvider codeProvider = new CSharpCodeProvider();
-                //create new parameters for compilation and add references(libs) to compiled app
+                // создаем новые параметры для компиляции и добавляем ссылки (libs) в скомпилированное приложение
                 CompilerParameters parameters = new CompilerParameters(new string[] { "System.dll" });
-                //is compiled code will be executable?(.exe)
+                //будет ли скомпилированный код исполняемым?(.exe)
                 parameters.GenerateExecutable = true;
-                //output path
+                //выходной путь
                 parameters.OutputAssembly = OutPath;
-                //code sources to compile
+                // исходники кода для компиляции
                 string[] sources = { fastColoredTextBox1.Text };
-                //results of compilation
+                //результаты компиляции
                 CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, sources);
 
-                //if has errors
+                //если есть ошибки
                 if (results.Errors.Count > 0)
                 {
                     string errsText = "";
@@ -314,12 +353,12 @@ namespace text_redaction
                                     ":" + CompErr.ErrorText + "" +
                                     Environment.NewLine;
                     }
-                    //show error message
+                    //показать сообщение об ошибке
                     MessageBox.Show(errsText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    //run compiled app
+                    // запускаем скомпилированное приложение
                     System.Diagnostics.Process.Start(OutPath);
                 }
             }
@@ -350,5 +389,65 @@ namespace text_redaction
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+
+
+        //Dragn Drop
+        //Перетаскивание файлов
+        void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            
+
+            label1.Text = "Перетащити файлы сюда";
+            
+            List<string> paths = new List<string>();//Для многочисленого сброса
+                                                    //Папок и показ всех файлов
+            foreach (string obj in (string[])e.Data.GetData(DataFormats.FileDrop))
+            {
+                if (Directory.Exists(obj))
+                {
+                    paths.AddRange(Directory.GetFiles(obj, "*.*\n", SearchOption.AllDirectories));
+                    //Ваши_Файлы.Text = string.Join("\r\n", paths);
+
+                }
+                else
+                {
+                    paths.Add(obj);
+                    label1.Text = string.Join("\r\n", paths);
+                }
+            }
+            MessageBox.Show("Все в норме файлы скинулись ৻(  •̀ ᗜ •́  ৻)");
+                                                                                  
+        }
+
+        void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                label1.Text = "Отпусти мышку";
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+         void panel1_DragLeave(object sender, EventArgs e)
+        {
+            label1.Text = "Перетащити файлы сюда";
+        }
+
+        public void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Ваши_Файлы_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

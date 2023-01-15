@@ -14,10 +14,11 @@ using Microsoft.Office.Interop.Word;
 using System.Speech.Recognition;
 using System.Globalization;
 using System.Speech.Synthesis;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace text_redaction
 {
-    public partial class Text_redactor : Form
+    public partial class Text_redactor : KryptonForm
     {
         private string Open_Files;
         private object rtb;
